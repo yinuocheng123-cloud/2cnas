@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: 正式绑定域名后，将 example.com 替换为真实域名。
+Sitemap: https://example.com/sitemap.xml

@@ -1,0 +1,31 @@
+<!--
+文件说明：该文件是 CNAS 静态网站的 404 页面。
+功能说明：当访问不存在页面时，引导用户回到首页继续路径判断。
+
+结构概览：
+  第一部分：页面元信息
+  第二部分：返回首页提示
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面未找到_CNAS认可路径判断</title>
+    <meta name="robots" content="noindex,follow" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="final-cta" style="min-height: 100vh; display: grid; align-items: center;">
+      <section class="shell final-cta-box">
+        <p class="eyebrow">404</p>
+        <h1>页面未找到</h1>
+        <p>当前页面不存在或已移动。你可以返回首页，继续进行 CNAS 认可路径判断。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="./index.html">返回首页</a>
+          <a class="btn btn-secondary" href="./index.html#assessment">开始路径判断</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

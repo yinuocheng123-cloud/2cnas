@@ -1,0 +1,10 @@
+{
+  "name": "CNAS认可路径判断",
+  "short_name": "CNAS路径判断",
+  "description": "CNAS认可路径判断、实验室体系建设、评审准备与整改陪跑服务。",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1457b8",
+  "icons": []
+}
