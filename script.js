@@ -116,7 +116,7 @@ const concernRiskTips = {
 // 后续可接入企业微信活码、企微客户联系API、飞书表格、金数据或自有增长中台API。
 const WECOM_QR_IMAGE = "./assets/wecom-qr-placeholder.png";
 const WECOM_CONTACT_TEXT = "企业微信：待填写";
-const LEAD_FORM_ENDPOINT = "";
+const LEAD_FORM_ENDPOINT = "https://cnaszhinan.com/api/lead";
 
 const wecomQrBox = document.querySelector("#wecomQrBox");
 const wecomContactText = document.querySelector("#wecomContactText");

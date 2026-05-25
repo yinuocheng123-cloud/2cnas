@@ -960,6 +960,36 @@ p {
   font-weight: 800;
 }
 
+.bottom-wecom-card {
+  display: inline-grid;
+  grid-template-columns: 96px minmax(120px, auto);
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.bottom-wecom-card img,
+.handoff-wecom-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  background: var(--white);
+  object-fit: cover;
+}
+
+.bottom-wecom-card span,
+.handoff-wecom-card span {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
 .handoff-section {
   background: var(--soft);
 }
@@ -990,6 +1020,19 @@ p {
   font-weight: 900;
 }
 
+.handoff-wecom-card {
+  display: grid;
+  grid-template-columns: 104px minmax(120px, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--blue-900);
+  background: var(--soft);
+  font-weight: 900;
+}
+
 .site-footer {
   padding: 26px 0;
   background: #071e3f;
@@ -1000,6 +1043,17 @@ p {
   justify-content: space-between;
   gap: 20px;
   font-size: 14px;
+}
+
+.footer-inner a {
+  color: rgba(255, 255, 255, 0.84);
+  text-decoration: none;
+}
+
+.footer-inner a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* ========== 第四部分：响应式适配 ==========
@@ -1152,6 +1206,18 @@ p {
 
   .contact-placeholders span {
     width: 100%;
+  }
+
+  .bottom-wecom-card,
+  .handoff-wecom-card {
+    grid-template-columns: 88px minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .bottom-wecom-card img,
+  .handoff-wecom-card img {
+    width: 88px;
+    height: 88px;
   }
 
   .handoff-box {
