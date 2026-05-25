@@ -45,7 +45,7 @@
           <a href="#process">服务流程</a>
           <a href="#knowledge">知识库</a>
         </div>
-        <a class="nav-cta" href="#assessment">开始路径判断</a>
+        <a class="nav-cta" href="#wecom-capture">添加顾问，领取CNAS认可路径判断问卷</a>
       </nav>
     </header>
 
@@ -59,8 +59,8 @@
               我们帮助实验室在启动认可前完成路径判断、能力边界梳理、体系建设节奏设计与评审风险预警，让准备工作从“堆材料”转向“可验证的认可决策”。
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#assessment">开始路径判断</a>
-              <a class="btn btn-secondary" href="#assessment">获取CNAS认可建议</a>
+              <a class="btn btn-primary" href="#wecom-capture">添加顾问，领取CNAS认可路径判断问卷</a>
+              <a class="btn btn-secondary" href="#assessment">在线填写路径判断问卷</a>
             </div>
             <div class="hero-proof" aria-label="关键价值">
               <span>路径先行</span>
@@ -101,6 +101,20 @@
               <span>风险识别</span>
               <span>建设优先级</span>
             </div>
+            <article class="wecom-card" id="wecom-capture">
+              <div>
+                <p class="eyebrow">企业微信优先承接</p>
+                <h3>先添加顾问，再领取完整路径判断问卷</h3>
+                <p>
+                  企业微信用于承接高意向咨询和后续路径建议。当前未配置真实二维码，正式投放前请替换为真实企业微信二维码。
+                </p>
+                <p class="wecom-contact" id="wecomContactText">企业微信：待填写</p>
+              </div>
+              <div class="wecom-qr" id="wecomQrBox" aria-label="企业微信二维码占位">
+                <span>企业微信二维码占位</span>
+                <small>assets/wecom-qr-placeholder.png 或真实二维码上线前替换</small>
+              </div>
+            </article>
           </div>
 
           <form class="assessment-form" id="pathAssessmentForm">
@@ -154,6 +168,35 @@
                   <option>只是先了解</option>
                 </select>
               </label>
+              <label>
+                <span>认可范围是否明确</span>
+                <select name="scopeClarity" required>
+                  <option value="">请选择认可范围状态</option>
+                  <option>已经明确</option>
+                  <option>大致明确</option>
+                  <option>还不明确</option>
+                  <option>需要顾问协助判断</option>
+                </select>
+              </label>
+              <label>
+                <span>人员设备是否基本具备</span>
+                <select name="resourceReadiness" required>
+                  <option value="">请选择资源准备状态</option>
+                  <option>基本具备</option>
+                  <option>部分具备</option>
+                  <option>明显不足</option>
+                  <option>暂不确定</option>
+                </select>
+              </label>
+              <label>
+                <span>是否已添加企业微信</span>
+                <select name="wecomAdded" required>
+                  <option value="">请选择企业微信状态</option>
+                  <option>已添加</option>
+                  <option>准备添加</option>
+                  <option>暂未添加</option>
+                </select>
+              </label>
             </div>
 
             <fieldset>
@@ -188,7 +231,14 @@
                 <p class="eyebrow">初步路径判断结果</p>
                 <h3>根据你填写的信息，先给出一个准备重点方向</h3>
               </div>
-            <div class="result-grid">
+              <div class="result-grade" id="resultGradeBox">
+                <span id="resultGrade">-</span>
+                <div>
+                  <strong id="resultGradeTitle">等待生成诊断等级</strong>
+                  <p id="resultGradeDescription">提交问卷后，将根据阶段、范围、资源和风险项生成 A/B/C 初步等级。</p>
+                </div>
+              </div>
+              <div class="result-grid">
                 <section>
                   <span>当前判断</span>
                   <p id="resultCurrent"></p>
@@ -214,7 +264,7 @@
                   <li>获取完整路径建议，进一步梳理准备重点和评审前风险。</li>
                 </ul>
               </div>
-              <a class="btn btn-secondary result-cta" href="#pathAssessmentForm">获取完整CNAS认可路径建议</a>
+              <a class="btn btn-secondary result-cta" href="#wecom-capture">添加顾问，获取完整路径建议</a>
             </article>
           </form>
         </div>

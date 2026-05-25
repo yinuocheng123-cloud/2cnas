@@ -7,11 +7,15 @@
 
 - 首页解决方案内容
 - CNAS认可路径判断问卷
+- 企业微信优先承接卡片
 - 提交后初步路径判断结果
+- A/B/C 初步诊断等级
 - 提交中、提交成功、提交失败状态
 - UTM 参数采集
 - 私域承接联系方式占位
+- 在线表单兜底入口
 - CNAS知识库入口
+- 增长中台接入设计文档
 - robots、sitemap、manifest、404 页面
 
 ## 如何本地查看
@@ -47,9 +51,39 @@ const LEAD_FORM_ENDPOINT = "";
 
 正式投放前必须替换为真实 Formspree、Getform 或自有后端接口，否则线索不会保存。
 
-当前提交逻辑使用 `fetch` 发送 JSON payload。payload 包含企业名称、联系人、手机号、实验室类型、当前阶段、最担心的问题、计划启动时间、补充说明、来源页面、UTM 参数、提交时间和初步诊断结果摘要。
+当前提交逻辑使用 `fetch` 发送 JSON payload。payload 包含企业名称、联系人、手机号、实验室类型、当前阶段、认可范围是否明确、人员设备是否基本具备、是否已添加企业微信、最担心的问题、计划启动时间、补充说明、来源页面、UTM 参数、提交时间和初步诊断结果摘要。
 
 如使用第三方表单服务，请根据服务要求调整请求格式。
+
+## 如何替换企业微信承接信息
+打开 `script.js`，找到：
+
+```js
+const WECOM_QR_IMAGE = "";
+const WECOM_CONTACT_TEXT = "企业微信：待填写";
+```
+
+正式投放前请将 `WECOM_QR_IMAGE` 替换为真实企业微信二维码图片路径，例如 `./assets/wecom-qr.png`。如果暂时没有真实二维码，页面会保留二维码占位区域，不会编造二维码。
+
+`WECOM_CONTACT_TEXT` 用于展示真实承接文案，例如企业微信名称或添加说明。
+
+## 增长中台与 UTM
+
+增长中台接入说明见：
+
+`docs/growth-center-design.md`
+
+投放链接建议统一携带：
+
+```text
+utm_source
+utm_medium
+utm_campaign
+utm_content
+utm_term
+```
+
+这些参数会随表单 payload 一起提交，便于后续归因。
 
 ## 如何替换真实域名
 正式绑定域名后，需要替换以下文件中的 `https://example.com/`：

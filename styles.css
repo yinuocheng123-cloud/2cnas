@@ -421,6 +421,60 @@ p {
   font-weight: 900;
 }
 
+.wecom-card {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 18px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid rgba(20, 87, 184, 0.22);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.wecom-card h3 {
+  margin-bottom: 8px;
+}
+
+.wecom-card p {
+  margin-bottom: 10px;
+}
+
+.wecom-contact {
+  color: var(--blue-800);
+  font-weight: 900;
+}
+
+.wecom-qr {
+  display: grid;
+  min-height: 150px;
+  place-items: center;
+  padding: 14px;
+  border: 1px dashed rgba(20, 87, 184, 0.38);
+  border-radius: 8px;
+  color: var(--blue-800);
+  background: var(--soft);
+  text-align: center;
+}
+
+.wecom-qr img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.wecom-qr span {
+  font-weight: 900;
+}
+
+.wecom-qr small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .assessment-form {
   display: grid;
   gap: 22px;
@@ -539,6 +593,40 @@ p {
 
 .result-heading h3 {
   margin-bottom: 0;
+}
+
+.result-grade {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid rgba(20, 87, 184, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.result-grade > span {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--white);
+  background: var(--blue-700);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.result-grade strong {
+  display: block;
+  color: var(--blue-900);
+  font-size: 18px;
+}
+
+.result-grade p {
+  margin: 6px 0 0;
 }
 
 .result-grid {
@@ -893,6 +981,10 @@ p {
     position: static;
   }
 
+  .wecom-card {
+    grid-template-columns: 1fr;
+  }
+
   .hero-visual {
     min-height: auto;
   }
@@ -993,6 +1085,10 @@ p {
   .assessment-form,
   .assessment-result {
     padding: 18px;
+  }
+
+  .result-grade {
+    grid-template-columns: 1fr;
   }
 
   .result-grid section {

@@ -112,8 +112,21 @@ const concernRiskTips = {
 };
 
 // ========== 第四部分：线索提交接口封装 ==========
-// TODO：正式上线前必须替换 LEAD_FORM_ENDPOINT，可使用 Formspree/Getform 地址或自有后端 API。
+// TODO：正式上线前必须替换 WECOM_QR_IMAGE、WECOM_CONTACT_TEXT 和 LEAD_FORM_ENDPOINT。
+const WECOM_QR_IMAGE = "";
+const WECOM_CONTACT_TEXT = "企业微信：待填写";
 const LEAD_FORM_ENDPOINT = "";
+
+const wecomQrBox = document.querySelector("#wecomQrBox");
+const wecomContactText = document.querySelector("#wecomContactText");
+
+if (wecomContactText) {
+  wecomContactText.textContent = WECOM_CONTACT_TEXT;
+}
+
+if (wecomQrBox && WECOM_QR_IMAGE) {
+  wecomQrBox.innerHTML = `<img src="${WECOM_QR_IMAGE}" alt="企业微信顾问二维码" />`;
+}
 
 async function submitLeadForm(payload) {
   if (!LEAD_FORM_ENDPOINT) {
@@ -156,6 +169,9 @@ const resultCurrent = document.querySelector("#resultCurrent");
 const resultRisk = document.querySelector("#resultRisk");
 const resultAction = document.querySelector("#resultAction");
 const resultNext = document.querySelector("#resultNext");
+const resultGrade = document.querySelector("#resultGrade");
+const resultGradeTitle = document.querySelector("#resultGradeTitle");
+const resultGradeDescription = document.querySelector("#resultGradeDescription");
 const submitButton = assessmentForm?.querySelector(".form-submit");
 const defaultSubmitText = submitButton?.textContent || "提交路径判断信息";
 
@@ -173,6 +189,52 @@ function setSubmitState(state, message) {
   submitButton.textContent = isSubmitting ? "提交中" : defaultSubmitText;
 }
 
+function buildDiagnosisGrade(payload) {
+  let score = 0;
+
+  if (payload.stage === "准备申请" || payload.stage === "评审后整改") {
+    score += 2;
+  }
+
+  if (payload.scopeClarity === "还不明确" || payload.scopeClarity === "需要顾问协助判断") {
+    score += 2;
+  }
+
+  if (payload.resourceReadiness === "明显不足" || payload.resourceReadiness === "暂不确定") {
+    score += 2;
+  }
+
+  if (payload.concerns.includes("已经返工过") || payload.concerns.includes("担心评审不过")) {
+    score += 2;
+  }
+
+  if (payload.wecomAdded === "已添加") {
+    score -= 1;
+  }
+
+  if (score >= 5) {
+    return {
+      grade: "C",
+      title: "高风险：建议先暂停直接申请，优先做完整路径判断",
+      description: "当前更需要顾问协助确认范围、资源和评审准备度，避免把问题推到现场评审阶段。",
+    };
+  }
+
+  if (score >= 2) {
+    return {
+      grade: "B",
+      title: "中风险：可以推进，但需要先收拢范围与资源差距",
+      description: "建议先完成路径判断问卷和顾问沟通，再决定体系建设、材料准备和申请节奏。",
+    };
+  }
+
+  return {
+    grade: "A",
+    title: "基础较清晰：可进入下一步路径细化",
+    description: "当前具备继续梳理认可路径的基础，但仍需确认标准方法、资源证据和评审准备重点。",
+  };
+}
+
 if (assessmentForm && assessmentMessage && assessmentResult) {
   assessmentForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -186,6 +248,9 @@ if (assessmentForm && assessmentMessage && assessmentResult) {
       phone: formData.get("phone"),
       labType: formData.get("labType"),
       stage: formData.get("stage"),
+      scopeClarity: formData.get("scopeClarity"),
+      resourceReadiness: formData.get("resourceReadiness"),
+      wecomAdded: formData.get("wecomAdded"),
       concerns,
       timeline: formData.get("timeline"),
       notes: formData.get("notes"),
@@ -201,6 +266,7 @@ if (assessmentForm && assessmentMessage && assessmentResult) {
       .filter(Boolean);
     const riskText = [rule.risk, ...concernTips].join(" ");
     const diagnosisSummary = {
+      grade: buildDiagnosisGrade(leadPayload),
       current: rule.current,
       risk: riskText,
       action: rule.action,
@@ -212,6 +278,9 @@ if (assessmentForm && assessmentMessage && assessmentResult) {
     resultRisk.textContent = diagnosisSummary.risk;
     resultAction.textContent = diagnosisSummary.action;
     resultNext.textContent = diagnosisSummary.next;
+    resultGrade.textContent = diagnosisSummary.grade.grade;
+    resultGradeTitle.textContent = diagnosisSummary.grade.title;
+    resultGradeDescription.textContent = diagnosisSummary.grade.description;
     assessmentResult.classList.add("is-visible");
     assessmentResult.scrollIntoView({ behavior: "smooth", block: "start" });
 
