@@ -60,7 +60,7 @@
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#wecom-capture">添加顾问，领取CNAS认可路径判断问卷</a>
-              <a class="btn btn-secondary" href="#assessment">在线填写路径判断问卷</a>
+              <a class="btn btn-secondary" href="#assessment">先在线填写基础信息</a>
             </div>
             <div class="hero-proof" aria-label="关键价值">
               <span>路径先行</span>
@@ -104,20 +104,26 @@
             <article class="wecom-card" id="wecom-capture">
               <div>
                 <p class="eyebrow">企业微信优先承接</p>
-                <h3>先添加顾问，再领取完整路径判断问卷</h3>
+                <h3>添加CNAS认可指南顾问</h3>
+                <p class="wecom-subtitle">领取CNAS认可路径判断问卷</p>
                 <p>
-                  企业微信用于承接高意向咨询和后续路径建议。当前未配置真实二维码，正式投放前请替换为真实企业微信二维码。
+                  如果你已经确定要做CNAS认可，建议不要急着先做材料，而是先判断当前是否适合启动，并提前做好认可路径设计。
                 </p>
                 <p class="wecom-contact" id="wecomContactText">企业微信：待填写</p>
               </div>
               <div class="wecom-qr" id="wecomQrBox" aria-label="企业微信二维码占位">
-                <span>企业微信二维码占位</span>
-                <small>assets/wecom-qr-placeholder.png 或真实二维码上线前替换</small>
+                <img src="./assets/wecom-qr-placeholder.png" alt="企业微信二维码占位图" />
+                <small>真实二维码上线前替换</small>
               </div>
+              <a class="btn btn-secondary wecom-confirm" href="#assessment">我已添加，继续填写基础信息</a>
             </article>
           </div>
 
           <form class="assessment-form" id="pathAssessmentForm">
+            <div class="form-heading">
+              <p class="eyebrow">在线表单兜底入口</p>
+              <h3>先在线填写基础信息</h3>
+            </div>
             <div class="form-grid">
               <label>
                 <span>企业名称</span>
@@ -172,10 +178,9 @@
                 <span>认可范围是否明确</span>
                 <select name="scopeClarity" required>
                   <option value="">请选择认可范围状态</option>
-                  <option>已经明确</option>
+                  <option>已明确</option>
                   <option>大致明确</option>
-                  <option>还不明确</option>
-                  <option>需要顾问协助判断</option>
+                  <option>还不清楚</option>
                 </select>
               </label>
               <label>
@@ -184,17 +189,16 @@
                   <option value="">请选择资源准备状态</option>
                   <option>基本具备</option>
                   <option>部分具备</option>
+                  <option>不确定</option>
                   <option>明显不足</option>
-                  <option>暂不确定</option>
                 </select>
               </label>
               <label>
                 <span>是否已添加企业微信</span>
                 <select name="wecomAdded" required>
                   <option value="">请选择企业微信状态</option>
-                  <option>已添加</option>
-                  <option>准备添加</option>
-                  <option>暂未添加</option>
+                  <option>是</option>
+                  <option>否</option>
                 </select>
               </label>
             </div>
@@ -408,6 +412,7 @@
           <div class="section-heading">
             <p class="eyebrow">四步服务流程</p>
             <h2>先判断，再建设，再预警，最后进入评审准备闭环</h2>
+            <p>从首次认可路径判断，到体系建设、评审准备、整改闭环、监督评审、复评审和扩项维护，提供全周期支持。</p>
           </div>
           <div class="process-line">
             <article>
@@ -434,7 +439,44 @@
         </div>
       </section>
 
-      <!-- ========== 第七部分：知识库 ==========
+      <!-- ========== 第七部分：认可后维护 ==========
+        为什么这样做：维护内容放在中后段，补齐全周期表达，但不抢首屏路径判断主线。
+      -->
+      <section class="section maintenance-section" id="maintenance">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="eyebrow">CNAS认可后维护</p>
+            <h2>CNAS认可不是拿证结束，后期维护才决定持续有效</h2>
+            <p>
+              通过认可之后，实验室还需要持续做好体系运行、监督评审、复评审、扩项变更、内审管理评审和整改闭环，避免后期因维护不足带来风险。
+            </p>
+          </div>
+          <div class="maintenance-grid">
+            <article>
+              <h3>体系运行维护</h3>
+              <p>持续检查体系文件是否适用、运行记录是否完整、内审和管理评审是否真实有效、不符合项是否形成闭环。</p>
+            </article>
+            <article>
+              <h3>监督评审与复评审准备</h3>
+              <p>提前梳理监督评审、复评审前的重点风险，检查历史问题整改情况、体系运行证据和现场评审准备状态。</p>
+            </article>
+            <article>
+              <h3>扩项与变更支持</h3>
+              <p>面向已经通过认可但需要新增项目、调整范围或发生人员设备变化的实验室，协助判断扩项和变更路径。</p>
+            </article>
+            <article>
+              <h3>年度合规维护包</h3>
+              <p>围绕人员授权、设备校准、期间核查、能力验证、质量控制、记录维护和评审前风险排查，形成年度维护节奏。</p>
+            </article>
+          </div>
+          <div class="maintenance-actions">
+            <a class="btn btn-primary" href="#wecom-capture">添加顾问，获取完整路径建议</a>
+            <a class="btn btn-secondary" href="#maintenance">了解认可后维护重点</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 第八部分：知识库 ==========
         为什么这样做：知识库承接中低意向用户，让首页不仅促咨询，也能提供继续了解的内容入口。
       -->
       <section class="section knowledge-section" id="knowledge">
@@ -496,7 +538,7 @@
         </div>
       </section>
 
-      <!-- ========== 第八部分：常见问题 ==========
+      <!-- ========== 第九部分：常见问题 ==========
         为什么这样做：FAQ 处理咨询前阻力，把“是否现在开始”“是否必须全套建设”等疑虑前置回答。
       -->
       <section class="section faq-section" id="faq">
@@ -523,11 +565,19 @@
               <summary>评审前多久开始风险预警更合适？</summary>
               <p>越早越好。若已经接近评审窗口，应优先扫描高风险不符合项和关键证据缺口，先保证评审准备度。</p>
             </details>
+            <details>
+              <summary>CNAS认可通过后还需要维护吗？</summary>
+              <p>需要。CNAS认可不是拿证结束，实验室后续仍需持续做好体系运行、人员设备管理、内审、管理评审、能力验证、监督评审、复评审和整改闭环等工作。</p>
+            </details>
+            <details>
+              <summary>CNAS认可后维护适合哪些实验室？</summary>
+              <p>适合已经通过CNAS认可、准备监督评审或复评审、计划扩项变更、体系运行记录不够稳定，或曾经出现整改问题的实验室。</p>
+            </details>
           </div>
         </div>
       </section>
 
-      <!-- ========== 第九部分：底部咨询转化 ==========
+      <!-- ========== 第十部分：底部咨询转化 ==========
         为什么这样做：末屏把用户重新带回路径判断，用明确结果承诺促成咨询动作。
       -->
       <section class="final-cta" id="consult">
@@ -538,9 +588,9 @@
             提交你的实验室现状、目标认可范围和计划时间，我们将协助你梳理路径风险、建设优先级与评审准备方案。
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#assessment">开始路径判断</a>
-            <a class="btn btn-secondary" href="#assessment">获取CNAS认可建议</a>
-            <a class="btn btn-ghost" href="#assessment">咨询评审准备方案</a>
+            <a class="btn btn-primary" href="#wecom-capture">添加顾问，获取完整路径建议</a>
+            <a class="btn btn-secondary" href="#maintenance">了解认可后维护重点</a>
+            <a class="btn btn-ghost" href="#assessment">先在线填写基础信息</a>
           </div>
           <div class="contact-placeholders" aria-label="联系方式占位">
             <span>电话：待填写</span>

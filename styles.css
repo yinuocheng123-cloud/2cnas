@@ -438,6 +438,12 @@ p {
   margin-bottom: 8px;
 }
 
+.wecom-subtitle {
+  margin-bottom: 10px;
+  color: var(--blue-700);
+  font-weight: 900;
+}
+
 .wecom-card p {
   margin-bottom: 10px;
 }
@@ -473,6 +479,15 @@ p {
 .wecom-qr small {
   color: var(--muted);
   font-size: 12px;
+}
+
+.wecom-confirm {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.form-heading h3 {
+  margin-bottom: 0;
 }
 
 .assessment-form {
@@ -852,6 +867,32 @@ p {
   font-weight: 900;
 }
 
+.maintenance-section {
+  background: var(--soft);
+}
+
+.maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.maintenance-grid article {
+  min-height: 230px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.maintenance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
 .knowledge-grid {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -1005,6 +1046,7 @@ p {
   .scenario-grid,
   .process-line,
   .knowledge-grid,
+  .maintenance-grid,
   .metrics-grid,
   .form-grid,
   .choice-grid,
@@ -1074,6 +1116,7 @@ p {
   .scenario-grid,
   .process-line,
   .knowledge-grid,
+  .maintenance-grid,
   .metrics-grid,
   .form-grid,
   .choice-grid,

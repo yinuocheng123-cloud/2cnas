@@ -113,7 +113,8 @@ const concernRiskTips = {
 
 // ========== 第四部分：线索提交接口封装 ==========
 // TODO：正式上线前必须替换 WECOM_QR_IMAGE、WECOM_CONTACT_TEXT 和 LEAD_FORM_ENDPOINT。
-const WECOM_QR_IMAGE = "";
+// 后续可接入企业微信活码、企微客户联系API、飞书表格、金数据或自有增长中台API。
+const WECOM_QR_IMAGE = "./assets/wecom-qr-placeholder.png";
 const WECOM_CONTACT_TEXT = "企业微信：待填写";
 const LEAD_FORM_ENDPOINT = "";
 
@@ -190,48 +191,44 @@ function setSubmitState(state, message) {
 }
 
 function buildDiagnosisGrade(payload) {
-  let score = 0;
-
-  if (payload.stage === "准备申请" || payload.stage === "评审后整改") {
-    score += 2;
-  }
-
-  if (payload.scopeClarity === "还不明确" || payload.scopeClarity === "需要顾问协助判断") {
-    score += 2;
-  }
-
-  if (payload.resourceReadiness === "明显不足" || payload.resourceReadiness === "暂不确定") {
-    score += 2;
-  }
-
-  if (payload.concerns.includes("已经返工过") || payload.concerns.includes("担心评审不过")) {
-    score += 2;
-  }
-
-  if (payload.wecomAdded === "已添加") {
-    score -= 1;
-  }
-
-  if (score >= 5) {
+  if (
+    payload.stage === "刚开始了解" &&
+    (payload.scopeClarity === "还不清楚" ||
+      payload.resourceReadiness === "不确定" ||
+      payload.resourceReadiness === "明显不足")
+  ) {
     return {
       grade: "C",
-      title: "高风险：建议先暂停直接申请，优先做完整路径判断",
-      description: "当前更需要顾问协助确认范围、资源和评审准备度，避免把问题推到现场评审阶段。",
+      title: "C类：暂不适合直接启动申请",
+      description: "当前更适合先补清认可范围、资源条件和准备边界，再决定是否进入正式申请节奏。",
     };
   }
 
-  if (score >= 2) {
+  if (
+    payload.stage === "准备申请" ||
+    payload.stage === "评审后整改" ||
+    payload.timeline === "立即启动" ||
+    payload.timeline === "1个月内"
+  ) {
+    return {
+      grade: "A",
+      title: "A类：适合进入认可路径设计阶段",
+      description: "当前已经接近启动或评审节点，建议尽快完成完整路径判断，明确范围、资源和评审准备重点。",
+    };
+  }
+
+  if (payload.stage === "已准备建设" || payload.stage === "已做体系文件" || payload.timeline === "3个月内") {
     return {
       grade: "B",
-      title: "中风险：可以推进，但需要先收拢范围与资源差距",
-      description: "建议先完成路径判断问卷和顾问沟通，再决定体系建设、材料准备和申请节奏。",
+      title: "B类：适合先准备，不建议马上申请",
+      description: "当前可以推进基础准备，但应先收拢认可范围、人员设备和体系运行证据，再进入申请动作。",
     };
   }
 
   return {
-    grade: "A",
-    title: "基础较清晰：可进入下一步路径细化",
-    description: "当前具备继续梳理认可路径的基础，但仍需确认标准方法、资源证据和评审准备重点。",
+    grade: "C",
+    title: "C类：暂不适合直接启动申请",
+    description: "当前信息仍需补充，建议先完成基础判断，再决定是否进入认可路径设计阶段。",
   };
 }
 

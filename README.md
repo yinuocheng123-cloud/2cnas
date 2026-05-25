@@ -15,6 +15,7 @@
 - 私域承接联系方式占位
 - 在线表单兜底入口
 - CNAS知识库入口
+- CNAS认可后维护模块
 - 增长中台接入设计文档
 - robots、sitemap、manifest、404 页面
 
@@ -59,11 +60,11 @@ const LEAD_FORM_ENDPOINT = "";
 打开 `script.js`，找到：
 
 ```js
-const WECOM_QR_IMAGE = "";
+const WECOM_QR_IMAGE = "./assets/wecom-qr-placeholder.png";
 const WECOM_CONTACT_TEXT = "企业微信：待填写";
 ```
 
-正式投放前请将 `WECOM_QR_IMAGE` 替换为真实企业微信二维码图片路径，例如 `./assets/wecom-qr.png`。如果暂时没有真实二维码，页面会保留二维码占位区域，不会编造二维码。
+正式投放前请将 `WECOM_QR_IMAGE` 从占位图替换为真实企业微信二维码图片路径，例如 `./assets/wecom-qr.png`。如果暂时没有真实二维码，页面会保留二维码占位区域，不会编造二维码。
 
 `WECOM_CONTACT_TEXT` 用于展示真实承接文案，例如企业微信名称或添加说明。
 
@@ -84,6 +85,12 @@ utm_term
 ```
 
 这些参数会随表单 payload 一起提交，便于后续归因。
+
+## CNAS认可后维护模块用途
+
+页面中后段新增“CNAS认可后维护”模块，用于说明通过认可后仍需持续关注体系运行、监督评审、复评审、扩项变更、内审管理评审和整改闭环。
+
+该模块只补充全周期服务表达，不改变页面“先判断认可路径”的主线，也不把 CTA 改成购买维护服务。
 
 ## 如何替换真实域名
 正式绑定域名后，需要替换以下文件中的 `https://example.com/`：
