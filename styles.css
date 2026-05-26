@@ -33,6 +33,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -41,6 +42,7 @@ body {
   background: var(--white);
   font-family: "Inter", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 img {
@@ -152,6 +154,7 @@ h3 {
 
 p {
   color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
 /* ========== 第二部分：导航、首屏与通用组件 ==========
@@ -172,6 +175,7 @@ p {
   justify-content: space-between;
   min-height: 76px;
   gap: 24px;
+  min-width: 0;
 }
 
 .brand,
@@ -187,6 +191,7 @@ p {
   gap: 10px;
   color: var(--blue-900);
   font-weight: 900;
+  min-width: 0;
 }
 
 .brand-mark {
@@ -203,6 +208,8 @@ p {
   gap: 28px;
   color: var(--muted);
   font-size: 15px;
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
 .nav-links a:hover {
@@ -214,9 +221,12 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   min-height: 46px;
   border-radius: 8px;
   font-weight: 800;
+  text-align: center;
+  white-space: normal;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
@@ -284,9 +294,18 @@ p {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.96fr) minmax(420px, 1.04fr);
+  grid-template-columns: minmax(0, 0.96fr) minmax(360px, 1.04fr);
   align-items: center;
   gap: 54px;
+}
+
+.hero-grid > *,
+.assessment-layout > *,
+.two-column > *,
+.faq-layout > *,
+.handoff-box > *,
+.footer-inner > * {
+  min-width: 0;
 }
 
 .hero-copy {
@@ -391,7 +410,7 @@ p {
 
 .assessment-layout {
   display: grid;
-  grid-template-columns: 0.78fr 1.22fr;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
   gap: 42px;
   align-items: start;
   padding: 34px;
@@ -423,7 +442,7 @@ p {
 
 .wecom-card {
   display: grid;
-  grid-template-columns: 1fr 150px;
+  grid-template-columns: minmax(0, 1fr) minmax(132px, 150px);
   gap: 18px;
   align-items: center;
   margin-top: 22px;
@@ -466,7 +485,7 @@ p {
 }
 
 .wecom-qr img {
-  width: 100%;
+  width: min(100%, 150px);
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 6px;
@@ -502,13 +521,13 @@ p {
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 18px;
 }
 
 .choice-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
   gap: 12px;
 }
 
@@ -646,7 +665,7 @@ p {
 
 .result-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 14px;
 }
 
@@ -702,7 +721,7 @@ p {
 */
 .two-column {
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
   gap: 56px;
 }
 
@@ -746,7 +765,7 @@ p {
 }
 
 .system-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
 }
 
 .system-card {
@@ -803,7 +822,7 @@ p {
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   gap: 18px;
 }
 
@@ -826,7 +845,7 @@ p {
 }
 
 .scenario-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
 }
 
 .scenario-grid article,
@@ -840,7 +859,7 @@ p {
 
 .process-line {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -873,7 +892,7 @@ p {
 
 .maintenance-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 18px;
 }
 
@@ -894,12 +913,12 @@ p {
 }
 
 .knowledge-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
 }
 
 .faq-layout {
   display: grid;
-  grid-template-columns: 0.78fr 1.22fr;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
   gap: 64px;
   align-items: start;
 }
@@ -962,7 +981,7 @@ p {
 
 .bottom-wecom-card {
   display: inline-grid;
-  grid-template-columns: 96px minmax(120px, auto);
+  grid-template-columns: 96px minmax(0, auto);
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
@@ -996,7 +1015,7 @@ p {
 
 .handoff-box {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
   gap: 34px;
   align-items: center;
   padding: 34px;
@@ -1022,7 +1041,7 @@ p {
 
 .handoff-wecom-card {
   display: grid;
-  grid-template-columns: 104px minmax(120px, 1fr);
+  grid-template-columns: 104px minmax(0, 1fr);
   align-items: center;
   gap: 14px;
   padding: 14px 16px;
@@ -1043,7 +1062,7 @@ p {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(180px, 0.72fr) minmax(260px, 0.9fr);
+  grid-template-columns: minmax(0, 1.18fr) minmax(160px, 0.72fr) minmax(240px, 0.9fr);
   align-items: start;
   gap: 34px;
   font-size: 14px;
@@ -1162,11 +1181,15 @@ p {
 }
 
 /* ========== 第四部分：响应式适配 ==========
-  为什么这样做：模块卡片数量较多，移动端需要改为单列，避免文字挤压和 CTA 换行失控。
+  为什么这样做：按 1024/768 明确划分桌面、平板、手机，避免旧桌面和缩放环境误入拥挤布局。
 */
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
   .nav-links {
     display: none;
+  }
+
+  .shell {
+    width: min(100% - 32px, 1040px);
   }
 
   .hero-grid,
@@ -1183,6 +1206,11 @@ p {
 
   .wecom-card {
     grid-template-columns: 1fr;
+  }
+
+  .wecom-qr {
+    justify-self: start;
+    width: min(100%, 184px);
   }
 
   .hero-visual {
@@ -1202,24 +1230,55 @@ p {
   }
 
   .system-grid,
+  .knowledge-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  }
+
   .scenario-grid,
-  .process-line,
-  .knowledge-grid,
   .maintenance-grid,
-  .metrics-grid,
+  .process-line {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  }
+
   .form-grid,
   .choice-grid,
   .result-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  }
+
+  .process-line {
+    gap: 18px;
+    border: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .process-line article {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
   }
 
   .process-line article + article {
-    border-left: 0;
+    border-left: 1px solid var(--line);
     border-top: 1px solid var(--line);
+  }
+
+  .footer-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  }
+
+  .footer-service-block {
+    order: 3;
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .shell {
     width: min(100% - 28px, 1160px);
   }
@@ -1238,6 +1297,7 @@ p {
 
   .nav {
     min-height: 66px;
+    gap: 12px;
   }
 
   .nav-cta {
@@ -1280,7 +1340,7 @@ p {
   .form-grid,
   .choice-grid,
   .result-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .assessment-layout,
@@ -1315,14 +1375,16 @@ p {
 
   .bottom-wecom-card,
   .handoff-wecom-card {
-    grid-template-columns: 88px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     width: 100%;
+    justify-items: center;
+    text-align: center;
   }
 
   .bottom-wecom-card img,
   .handoff-wecom-card img {
-    width: 88px;
-    height: 88px;
+    width: 112px;
+    height: 112px;
   }
 
   .handoff-box {
@@ -1330,6 +1392,29 @@ p {
   }
 
   .footer-inner {
-    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .footer-service-block {
+    order: initial;
+    grid-column: auto;
+  }
+
+  .footer-service-block li {
+    padding-left: 0;
+  }
+
+  .footer-service-block li::before {
+    display: none;
+  }
+
+  .footer-wecom-block {
+    justify-self: center;
+  }
+
+  .footer-wecom-block img {
+    margin: 0 auto;
   }
 }
